@@ -56,7 +56,8 @@ def handle_location(update: Update, context: CallbackContext) -> int:
         f'Description: {context.user_data["description"]}\n'
         f"Photo: [Attached]\n"
         f'Location: Latitude {context.user_data["location"].latitude}, Longitude {context.user_data["location"].longitude}\n\n'
-        f"Your information has been saved."
+        f"Your information has been saved.\n\n"
+        f"Let's start over. Press /start to provide a new description."
     )
 
     return ConversationHandler.END
@@ -111,9 +112,7 @@ def end(update: Update, context: CallbackContext) -> int:
 
 
 def main() -> None:
-    updater = Updater(
-        "6637940375:AAFneAFOfCYqoGpSSZ_tJlMq266xvpVdoDs", use_context=True
-    )
+    updater = Updater("TELEGRAM_BOT_TOKEN", use_context=True)
     dp = updater.dispatcher
 
     conv_handler = ConversationHandler(
